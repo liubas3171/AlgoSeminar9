@@ -54,7 +54,7 @@ if __name__ == "__main__":
     for i in range(num_bords):
         coords.append(round(random.random() * M, 2))
     coords.sort()
-    # Its list with numbers of operations joint with our...
+    # Its list with how much there are non intersected intervals at each index
     opt_list = [0] * (num_bords + 1)
 
     # compute_otp, find_solution and p are from lecture
