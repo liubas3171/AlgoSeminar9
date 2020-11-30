@@ -3,16 +3,6 @@ def min_price(i):
         return res_recursion[i]
     if i < 0:
         return 0
-    elif i >= 3:
-        comp_a = r * vals[i] + min_price(i - 1)
-        comp_b = 4 * c + min_price(i - 4)
-        if comp_a < comp_b:
-            schedule[i] = 'A'
-        else:
-            for j in range(4):
-                schedule[i - j] = 'B'
-        res_recursion[i] = min(comp_a, comp_b)
-        return min(comp_a, comp_b)
     elif i == 0:
         schedule[0] = "A"
         return r * vals[0]
@@ -22,6 +12,17 @@ def min_price(i):
     elif i == 2:
         schedule[0], schedule[1], schedule[2] = 'A', 'A', 'A'
         return (vals[0] + vals[1] + vals[2]) * r
+    else:
+        comp_a = r * vals[i] + min_price(i - 1)
+        comp_b = 4 * c + min_price(i - 4)
+        if comp_a < comp_b:
+            schedule[i] = 'A'
+        else:
+            for j in range(4):
+                schedule[i - j] = 'B'
+        res_recursion[i] = min(comp_a, comp_b)
+        return min(comp_a, comp_b)
+    
 
 
 if __name__ == "__main__":
