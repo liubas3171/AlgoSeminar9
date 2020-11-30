@@ -13,25 +13,15 @@ def min_price(i):
                 schedule[i - j] = 'B'
         res_recursion[i] = min(comp_a, comp_b)
         return min(comp_a, comp_b)
-    else:
-        res_val = first_three_min_price()
-        res_recursion[i] = res_val
-        return res_val
-
-
-def first_three_min_price():
-    first_schedules = [["A", 'A', 'A'], ['A', 'B', 'B'],
-                       ['A', 'A', 'B'], ['B', 'B', 'B']]
-    aaa = (vals[0] + vals[1] + vals[2]) * r
-    abb = vals[0] * r + 2 * c
-    aab = (vals[0] + vals[1]) * r + c
-    bbb = 3 * c
-    res = [aaa, abb, aab, bbb]
-    res_val = min(aaa, abb, aab, bbb)
-    ind = res.index(res_val)
-    for j in range(3):
-        schedule[j] = first_schedules[ind][j]
-    return res_val
+    elif i == 0:
+        schedule[0] = "A"
+        return r * vals[0]
+    elif i == 1:
+        schedule[0], schedule[1] = 'A', 'A'
+        return (vals[0] + vals[1]) * r
+    elif i == 2:
+        schedule[0], schedule[1], schedule[2] = 'A', 'A', 'A'
+        return (vals[0] + vals[1] + vals[2]) * r
 
 
 if __name__ == "__main__":
